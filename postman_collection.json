@@ -1,0 +1,438 @@
+{
+	"info": {
+		"_postman_id": "61b36305-2643-4c40-9b49-a87350dd5553",
+		"name": "Payment Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49046816",
+		"_collection_link": "https://vennetianushapavani2005-4966596.postman.co/workspace/Postman-API-Fundamentals-Studen~daa0e295-8e2f-4a1b-b548-677b4e54d544/collection/49046816-61b36305-2643-4c40-9b49-a87350dd5553?action=share&source=collection_link&creator=49046816"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/health",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/protected/me",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/protected/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"protected",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/protected/me",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "wrong_key",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/protected/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"protected",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " http://localhost:8000/api/v1/protected/me",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "wrong_secret",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/protected/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"protected",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/protected/me",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/protected/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"protected",
+						"me"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 50000,\r\n  \"currency\": \"INR\",\r\n  \"receipt\": \"receipt_123\",\r\n  \"notes\": {\r\n    \"customer_name\": \"John Doe\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 500,\r\n  \"currency\": \"INR\",\r\n  \"receipt\": \"receipt_001\",\r\n  \"notes\": {\r\n    \"customer\": \"Anusha\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/orders/order_Cme66f3IUJJmTDja",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/orders/order_fWxGgA4bnabrZo_P",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"order_fWxGgA4bnabrZo_P"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/payments",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"order_id\": \"order_xxxxxxxxxxxxxxxx\",\r\n  \"method\": \"upi\",\r\n  \"vpa\": \"user@paytm\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 500,\r\n  \"currency\": \"INR\",\r\n  \"receipt\": \"receipt_001\",\r\n  \"notes\": {\r\n    \"customer\": \"Anusha\"\r\n  }\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/orders/order_WSHQ_d-ULowvA52w",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "key_test_abc123",
+						"type": "text"
+					},
+					{
+						"key": "X-Api-Secret",
+						"value": "secret_test_xyz789",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/orders/order_PyIbrCjWVKAU77Zz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"order_PyIbrCjWVKAU77Zz"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
