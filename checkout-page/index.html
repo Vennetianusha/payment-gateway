@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Secure Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="checkout-container">
+    <h2>Complete Payment</h2>
+
+    <div class="order-box">
+      <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+      <p><strong>Amount:</strong> ₹<span id="amount"></span></p>
+    </div>
+
+    <div class="tabs">
+      <button onclick="showUPI()">UPI</button>
+      <button onclick="showCard()">Card</button>
+    </div>
+
+    <!-- UPI FORM -->
+    <div id="upiForm" class="form">
+      <input type="text" id="vpa" placeholder="username@bank" />
+      <button onclick="payUPI()">Pay Now</button>
+    </div>
+
+    <!-- CARD FORM -->
+    <div id="cardForm" class="form hidden">
+      <input placeholder="Card Number" id="cardNumber" />
+      <input placeholder="MM" id="expMonth" />
+      <input placeholder="YYYY" id="expYear" />
+      <input placeholder="CVV" id="cvv" />
+      <input placeholder="Name on Card" id="name" />
+      <button onclick="payCard()">Pay Now</button>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
