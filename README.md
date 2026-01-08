@@ -1,124 +1,104 @@
-# Payment Gateway with Hosted Checkout
+# 💳 Payment Gateway with Hosted Checkout
 
-This project is a full-stack **Payment Gateway system** that simulates real-world payment platforms like Razorpay or Stripe.  
-It focuses on backend API design, secure payment flows, validation logic, database modeling, and a hosted checkout experience.
+A full-stack **Payment Gateway system** inspired by platforms like **Razorpay / Stripe**, built as part of the **Partnr Network – Global Placement Program**.
 
-The goal of this project is to demonstrate practical **FinTech engineering skills** rather than just CRUD operations.
-
----
-
-## Project Overview
-
-The system allows merchants to:
-- Authenticate using API keys
-- Create payment orders
-- Accept payments via **UPI** and **Card**
-- Track payment status
-
-Customers can:
-- Open a hosted checkout page
-- Choose a payment method
-- Complete a simulated payment
-- See success or failure results
-
-All services run in Docker and communicate with a PostgreSQL database.
+This project demonstrates real-world fintech concepts such as merchant authentication, order management, multi-method payment processing (UPI & Cards), hosted checkout flow, database persistence, and Dockerized deployment.
 
 ---
 
-## Key Features
+## 🚀 Features
 
 ### Backend
-- Secure merchant authentication using **API Key & Secret**
+- Merchant authentication using **API Key & API Secret**
 - Order creation and management
-- Multi-method payment processing:
-  - UPI with VPA validation
-  - Card payments with Luhn algorithm validation
-- Payment lifecycle management:
+- Payment processing for:
+  - UPI (VPA validation)
+  - Cards (Luhn algorithm, expiry check, network detection)
+- Payment lifecycle:
 processing → success / failed
 
 markdown
 Copy code
-- PostgreSQL database with relational schema
-- Automatic seeding of a test merchant
-- Health check endpoint to verify system readiness
+- PostgreSQL database with proper schema & relationships
+- Auto-seeded test merchant
+- Health check endpoint
 
 ### Frontend
-- Hosted checkout page for customers
-- UPI and Card payment forms
-- Clear processing, success, and failure states
-- Simple merchant dashboard displaying credentials and transactions
+- **Hosted Checkout Page (Port 3001)**
+- UPI & Card payment forms
+- Processing state
+- Success / Failure result
+- **Merchant Dashboard (Port 3000)**
+- Displays API credentials
+- Transaction overview
 
-### Infrastructure
-- Fully Dockerized application
-- All services start using a single command
-- Clean separation between backend, frontend, and checkout services
+### Deployment
+- Fully **Dockerized**
+- All services start with a single command:
+```bash
+docker compose up -d
+🧱 Tech Stack
+Backend: Node.js, Express.js
 
----
+Database: PostgreSQL
 
-## Technology Stack
+Frontend: HTML, CSS, JavaScript
 
-- **Backend:** Node.js, Express.js  
-- **Database:** PostgreSQL  
-- **Frontend:** HTML, CSS, JavaScript  
-- **Containerization:** Docker, Docker Compose  
-- **API Testing:** Postman  
+Containerization: Docker, Docker Compose
 
----
+API Testing: Postman
 
-## Project Structure
-
+📂 Project Structure
+pgsql
+Copy code
 payment-gateway/
 ├── backend/
-│ ├── src/
-│ │ ├── controllers/
-│ │ ├── routes/
-│ │ ├── services/
-│ │ ├── config/
-│ │ └── server.js
-│ ├── Dockerfile
-│ └── package.json
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── config/
+│   │   └── server.js
+│   ├── Dockerfile
+│   └── package.json
 │
 ├── frontend/
-│ ├── index.html
-│ ├── script.js
-│ ├── style.css
-│ └── Dockerfile
+│   ├── index.html
+│   ├── script.js
+│   ├── style.css
+│   └── Dockerfile
 │
 ├── checkout-page/
-│ ├── index.html
-│ ├── script.js
-│ ├── style.css
-│ └── Dockerfile
+│   ├── index.html
+│   ├── script.js
+│   ├── style.css
+│   └── Dockerfile
 │
 ├── screenshots/
 ├── postman_collection.json
 ├── docker-compose.yml
 ├── .env.example
 └── README.md
+⚙️ Environment Configuration
+Create a .env file inside backend/ using the template below:
 
-yaml
+env
 Copy code
-
----
-
-## Environment Configuration
-
-Create a `.env` file inside the `backend/` directory using the template below:
-
-```env
 DATABASE_URL=postgresql://gateway_user:gateway_pass@postgres:5432/payment_gateway
 PORT=8000
 
+# Test merchant credentials
 TEST_API_KEY=key_test_abc123
 TEST_API_SECRET=secret_test_xyz789
 
+# Payment simulation
 TEST_MODE=false
 TEST_PAYMENT_SUCCESS=true
 TEST_PROCESSING_DELAY=1000
-The .env file is intentionally excluded from version control for security reasons.
+.env is intentionally excluded from GitHub for security reasons.
 
-Test Merchant Details
-A test merchant is automatically created when the application starts:
+🧪 Test Merchant (Auto-Seeded)
+The application seeds a test merchant on startup:
 
 Name: Test Merchant
 
@@ -128,9 +108,7 @@ API Key: key_test_abc123
 
 API Secret: secret_test_xyz789
 
-This allows immediate testing without manual setup.
-
-API Endpoints
+🔌 API Endpoints
 Health Check
 bash
 Copy code
@@ -151,7 +129,7 @@ bash
 Copy code
 GET  /api/v1/public/orders/:order_id
 POST /api/v1/public/payments
-Running the Application
+▶️ How to Run the Project
 1. Clone the repository
 bash
 Copy code
@@ -161,31 +139,34 @@ cd payment-gateway
 bash
 Copy code
 docker compose up -d --build
-3. Access the services
+3. Access the application
 Service	URL
 Health Check	http://localhost:8000/health
 Backend API	http://localhost:8000
 Merchant Dashboard	http://localhost:3000
 Checkout Page	http://localhost:3001
 
-Hosted Checkout Flow
+💳 Hosted Checkout Flow
 Create an order using Postman or API
 
-Open the checkout page with the order ID:
+Open checkout page:
 
 ruby
 Copy code
 http://localhost:3001/?order_id=order_xxxxxxxxxxxxxxxx
-Select UPI or Card payment
+Select payment method (UPI / Card)
 
 Complete payment
 
-View success or failure response
+View success or failure result
 
-Testing
-A complete Postman collection is included in the repository
+🧪 Postman Collection
+A complete Postman collection is included:
 
-It covers:
+pgsql
+Copy code
+postman_collection.json
+Import it into Postman to test:
 
 Health check
 
@@ -193,34 +174,34 @@ Order creation
 
 Payment processing
 
-Checkout flow testing
+Checkout flow
 
-Screenshots
-The screenshots/ folder contains images showing:
+📸 Screenshots
+Screenshots demonstrating:
 
 Docker services running
 
-API responses
+API testing
 
 Hosted checkout page
 
-Payment success and failure states
+Payment success & failure
 
-These screenshots serve as proof of working functionality.
+are available in the screenshots/ folder.
 
-What This Project Demonstrates
-Understanding of real-world payment gateway architecture
+🎯 Learning Outcomes
+Built a real-world FinTech payment system
 
-Secure API authentication patterns
+Implemented secure API authentication
 
-Input validation and transaction safety
+Designed payment validation logic
 
-Backend-driven state management
+Worked with Docker & PostgreSQL
 
-Docker-based deployment
+Created a hosted checkout experience
 
-Clean project structure suitable for production systems
+Followed industry-level backend architecture
 
-Author
+👩‍💻 Author
 Anusha Pavani Venneti
 Aspiring Backend / Full-Stack Developer
